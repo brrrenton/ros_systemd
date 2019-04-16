@@ -1,0 +1,13 @@
+[Unit]
+Description=Launch a launch file
+After=roscore.service
+
+[Service]
+ExecStart=/bin/bash -c "source /home/user/catkin_ws/devel/setup.bash && sleep 1 && roslaunch package launch_file.launch"
+ExecStop=/usr/bin/killall roslaunch
+Restart=on-abort
+Environment=ROS_HOSTNAME=`hostname`.local
+
+[Install]
+WantedBy=default.target
+

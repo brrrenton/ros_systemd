@@ -1,0 +1,12 @@
+[Unit]
+Description=Start ROS core
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c "source /opt/ros/melodic/setup.bash && /opt/ros/melodic/bin/roscore"
+ExecStop=/usr/bin/killall roscore
+Restart=on-abort
+
+[Install]
+WantedBy=default.target
+
