@@ -1,12 +1,15 @@
 [Unit]
-Description=Start ROS core
-After=network.target
-
-[Service]
-ExecStart=/bin/bash -c "source /opt/ros/melodic/setup.bash && /opt/ros/melodic/bin/roscore"
-ExecStop=/usr/bin/killall roscore
-Restart=on-abort
+Description=roscore
+After=multi-user.target
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
+
+[Service]
+Environment="ROS_HOSTNAME=%H.local"
+Environment="ROS_MASTER_URI=http://%H.local:11311/"
+Restart=on-failure
+
+User=ros
+ExecStart=/bin/bash -c "source /opt/ros/melodic/setup.bash && /opt/ros/melodic/bin/roscore"
 
