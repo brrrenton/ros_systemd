@@ -11,6 +11,5 @@ Environment="ROS_HOSTNAME=%H.local"
 Environment="ROS_MASTER_URI=http://%H.local:11311/"
 Restart=on-failure
 
-User=ros
 ExecStart=/bin/bash -c "source /home/ros/catkin_ws/devel/setup.bash && roslaunch --wait package launch_file.launch"
 
