@@ -1,9 +1,9 @@
 [Unit]
 Description=roscore
-After=multi-user.target
+After=default.target
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 
 [Service]
 Environment="ROS_HOSTNAME=%H.local"
